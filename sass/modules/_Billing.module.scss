@@ -40,7 +40,7 @@
     border: 2px solid red;
     background-color: rgba(255, 0, 0, 0.181);
   }
-  input:invalid:focus:not(:placeholder-shown) {
+  input:invalid:not(:placeholder-shown, :focus) {
     & ~ .requirements {
       visibility: visible;
     }
@@ -52,16 +52,7 @@
     border: 1px solid rgba(0, 0, 255, 0.623);
     background-color: rgba(0, 0, 255, 0.167);
   }
-  // select {
-  //     margin-top: .5rem;
-  //     font-size: 1rem;
-  //     display: block;
-  //     background-color: #373737;
-  //     color: general.$primary-color-light;
-  //     // height: 30px;
-  //     border: solid .5px hsl(0deg, 0%, 98%);
-  //     width: 50%;
-  // }
+
   fieldset {
     margin: auto;
     display: flex;
@@ -94,9 +85,14 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 1rem;
-    // & input {
-    //     width: 75%;
-    // }
+    div{
+  input:invalid:not(:placeholder-shown, :focus) {
+      & ~ .requirements {
+        visibility: visible;
+      }
+    }
+    }
+  
   }
   [type="number"] {
     -moz-appearance: textfield;
@@ -104,7 +100,6 @@
 }
 
 .requirements {
-  height: 0;
   transition: 0.28s;
   overflow: hidden;
   color: red;
@@ -117,16 +112,7 @@
     border: 1px solid rgba(0, 0, 255, 0.623);
     background-color: rgba(0, 0, 255, 0.167);
   }
-  // select {
-  //     margin-top: .5rem;
-  //     font-size: 1rem;
-  //     display: block;
-  //     background-color: #373737;
-  //     color: general.$primary-color-light;
-  //     // height: 30px;
-  //     border: solid .5px hsl(0deg, 0%, 98%);
-  //     width: 50%;
-  // }
+
   fieldset {
     margin: auto;
     display: flex;
@@ -146,9 +132,6 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 1rem;
-    // & input {
-    //     width: 75%;
-    // }
   }
   [type="number"] {
     -moz-appearance: textfield;
@@ -159,12 +142,18 @@
   display: flex;
   flex-direction: column;
   gap: 0.05rem;
-  & span {
-    font-size: 0.8rem;
-    font-weight: 200;
+  input:invalid:not(:placeholder-shown, :focus) {
+    & ~ .requirements {
+      visibility: visible;
+    }
   }
+  
+ 
 }
-
+.example{
+  font-size: 0.8rem;
+    font-weight: 200;
+}
 @media only screen and (min-width: general.$mobile-query) {
   .billing_form {
     margin-top: 2rem;

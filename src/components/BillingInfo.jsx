@@ -59,32 +59,32 @@ export default function CheckOutForm(props) {
             <fieldset>
               <div className={billing.labelInputPair}>
                 <label htmlFor="name">Name as on card</label>
-                <input placeholder=" " type="text" id="name" pattern="^[a-zA-ZÆØÅæøå'- ]*$" autocomplete="name" required />
+                <input placeholder=" " type="text" name="name" id="name" pattern="^[-a-zA-ZÆØÅæøå' ]*$" minLength="1" maxLength="45" autoComplete="name" required />
                 <span className={billing.requirements}> Must only contain letters</span>
               </div>
               <div className={billing.splitRow}>
                 <div className={billing.labelInputPair}>
                   <label htmlFor="street_address">Street address</label>
-                  <span> Guldbergsgade 420</span>
-                  <input placeholder=" " type="text" id="street_address" autocomplete="address-line1" required />
+                  <span className={billing.example}> Guldbergsgade 23</span>
+                  <input placeholder=" " type="text" id="street_address" autoComplete="address-line1" required />
                 </div>
                 <div className={billing.labelInputPair}>
                   <label htmlFor="apartment">Apartment</label>
-                  <span>69 TV</span>
-                  <input placeholder=" " type="text" id="apartment" autocomplete="address-line2" required />
+                  <span className={billing.example}>3 TV</span>
+                  <input placeholder=" " type="text" id="apartment" autoComplete="address-line2" required />
                 </div>
               </div>
               <div className={billing.splitRow}>
                 <div className={billing.labelInputPair}>
                   <label htmlFor="city">City</label>
-                  {<span>Haderslev</span>}
-                  <input placeholder=" " type="text" id="city" pattern="^[a-zA-ZÆØÅæøå'- ]*$" autocomplete="address-line3" required />
+                  {<span className={billing.example}>Haderslev</span>}
+                  <input placeholder=" " type="text" id="city" pattern="^[-a-zA-ZÆØÅæøå' ]*$" autoComplete="address-level2" required />
                   <span className={billing.requirements}> Must only contain letters</span>
                 </div>
                 <div className={billing.labelInputPair}>
                   <label htmlFor="postalcode">Postal Code</label>
-                  {<span>6100</span>}
-                  <input placeholder=" " type="number" id="postalcode" autocomplete="postal-code" required />
+                  {<span className={billing.example}>6100</span>}
+                  <input placeholder=" " type="text" inputMode="number" pattern="[0-9 ]+" id="postalcode" autoComplete="postal-code" required />
                   <span className={billing.requirements}> Must only contain numbers</span>
                 </div>
               </div>
@@ -96,7 +96,7 @@ export default function CheckOutForm(props) {
                 <button className={generalStyles.secondaryButton} onClick={backButton}>
                   Back
                 </button>
-                <button className={generalStyles.primaryButton} onClick={exportInfo}>
+                <button className={generalStyles.primaryButton}>
                   Next
                 </button>
               </div>

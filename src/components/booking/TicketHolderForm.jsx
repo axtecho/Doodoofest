@@ -10,9 +10,8 @@ export default function TicketHolderForm(props) {
   const fieldSet = useRef(null);
   const [isChecked, setIsChecked] = useState(false)
 
-  function storeTicketInfo(e){
-    /* console.log(e.target.checked);
-    console.log(fieldSet.current.elements); */
+  function handleSubmit(){
+    props.setStep((old) => old + 1);
 
   }
   function handleClick(){
@@ -26,12 +25,16 @@ export default function TicketHolderForm(props) {
       console.log(ticketHolder)
       const [info, setInfo] = useState('') 
       return (
-        <fieldset className={billing.ticketholderCard} ref={fieldSet}>
+        <fieldset className={billing.ticketholderCard} >
           <legend>Ticketholder {i + 1}</legend>
           <label htmlFor="name">Name</label>
-          <input type="text" id={"name"+i} name={"name"+i} placeholder=" " pattern="^[a-zA-ZÆØÅæøå'- ]*$" autocomplete="name" required onChange={isChecked ? console.log(fieldSet) : console.log("I'm not checked")}/>
+          <input type="text" id={"name"+i} name={"name"+i} placeholder=" " pattern="^[-a-zA-ZÆØÅæøå' ]*$" autoComplete="name" required onChange={isChecked ? console.log(fieldSet) : console.log("I'm not checked")}/>
+          <span className={billing.requirements}>Must only contain letters</span>
+<>
           <label htmlFor="email">Email</label>
-          <input type="email" name="email" id="email" placeholder=" " autocomplete="email" required />
+          <input type="email" name="email" id="email" placeholder=" " autoComplete="email" required />
+          <span className={billing.requirements}>Please use valid email address</span>
+          </>
           <div>
               <label htmlFor="creditcard_info">
                 Use this for the credit card info
@@ -53,39 +56,14 @@ export default function TicketHolderForm(props) {
   });
   return (
     <>
-      {/* <h2>TICKET HOLDERS INFORMATION</h2>
-
-      <a href="#/">← Back</a>
-      <form ref={formEl}>
-        <fieldset>{holderForm}</fieldset>
-        <div className={generalSyles.buttonWrapper}>
-          <button
-            className={generalSyles.secondaryButton}
-            onClick={() => {
-              props.setStep((old) => old - 1);
-            }}
-          >
-            Back
-          </button>
-          <button
-            className={generalSyles.primaryButton}
-            onClick={() => {
-              props.setStep((old) => old + 1);
-            }}
-          >
-            Continue to payment
-          </button>
-        </div>
-      </form> */}
-
-      {/* -------------------------------------------------- */}
+  
       <img src="/img/step3.svg" alt="step3 breadcrumbs" className={form2Styles.breadcrumbs} />
 
       <div className={form2Styles.checkout_grid}>
         <section className={form2Styles.checkout_options}>
           <h2>Ticket holder information</h2>
           <a href="#/">← Back</a>
-          <form className={billing.billing_form} ref={formEl}>
+          <form className={billing.billing_form} ref={formEl} onSubmit={handleSubmit} >
             {holderForm}
             <fieldset>
               <div className={generalStyles.buttonWrapper}>
@@ -98,11 +76,7 @@ export default function TicketHolderForm(props) {
                   Back
                 </button>
                 <button
-                  className={generalStyles.primaryButton}
-                  onClick={() => {
-                    props.setStep((old) => old + 1);
-                  }}
-                >
+                  className={generalStyles.primaryButton}>
                   Continue to payment
                 </button>
               </div>

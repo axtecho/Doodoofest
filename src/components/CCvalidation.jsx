@@ -22,6 +22,9 @@ export default function CCvalidation({ ...props }) {
   const reservation = { id: props.reservation.id };
 
   function changeFocus(e) {
+    const CCMaxLength = formEl.current.elements[2].maxLength;
+    const ExpMaxLength = formEl.current.elements[3].maxLength;
+    const CVCMaxLength = formEl.current.elements[4].maxLength;
     /*     const attr = parseInt(e.target.attributes.maxLength.value, 10);
      */
     // if attrb === undefined - because the input for Name doesnt carry a maxlength
@@ -36,7 +39,22 @@ export default function CCvalidation({ ...props }) {
         } 
       }
     }*/
-  }
+if(CCnumber[1].value.length===CCMaxLength){
+  CCexpiry.focus();
+} 
+
+if(CCexpiry.value.length===ExpMaxLength){
+CCcvc.focus();
+}
+
+if(CCcvc.value.length===CVCMaxLength){
+  complete_purchase_button.focus();
+}
+
+console.log(CCexpiry.value.length)
+console.log(ExpMaxLength)
+
+}
   function handleCardDisplay() {
     const rawText = [...number.split(" ").join("")]; // Remove old space
     const creditCard = []; // Create card as array
@@ -50,7 +68,7 @@ export default function CCvalidation({ ...props }) {
     /*     console.log(formEl.current.elements.expiry.value);
      */ if (formEl.current === null) {
     } else {
-      formEl.current.elements.expiry.value = formEl.current.elements.expiry.value
+      formEl.current.elements.CCexpiry.value = formEl.current.elements.CCexpiry.value
         .replace(
           /^([1-9]\/|[2-9])$/g,
           "0$1/" // 3 > 03/
@@ -132,35 +150,35 @@ export default function CCvalidation({ ...props }) {
             <fieldset>
               <div className={billing.inputLabelPair}>
                 <label htmlFor="name">Name</label>
-                <input placeholder=" " type="text" id="name" name="name" pattern="^[a-zA-ZÆØÅæøå'- ]*$" value={name} onChange={(e) => setName(e.target.value)} onFocus={(e) => setFocus(e.target.name)} minLength="1" maxLength="45" autocomplete="cc-name" required />
+                <input placeholder=" " type="text" id="name" name="name" pattern="^[-a-zA-ZÆØÅæøå' ]*$" value={name} onChange={(e) => setName(e.target.value)} onFocus={(e) => setFocus(e.target.name)} minLength="1" maxLength="45" autoComplete="cc-name" required />
                 <span className={billing.requirements}> Must only contain letters</span>
               </div>
               <div className={billing.inputLabelPair}>
-                <label id="number">Card Number</label>
+                <label id="CCnumber">Card Number</label>
                 <input
                   placeholder=" "
                   type="tel"
                   pattern="[0-9 ]+"
-                  id="number"
-                  name="number"
+                  id="CCnumber"
+                  name="CCnumber"
                   value={handleCardDisplay()}
                   onChange={(e) => setNumber(e.target.value)}
                   onFocus={(e) => setFocus(e.target.name)}
                   onInput={(e) => handleCardDisplay()}
                   minLength="16"
                   maxLength="19"
-                  autocomplete="cc-number"
+                  autoComplete="cc-number"
                   required
                 />
                 <span className={billing.requirements}> Must only contain numbers</span>
               </div>
               <div className={billing.twoColumn}>
                 <div className={billing.inputLabelPair}>
-                  <label htmlFor="expiry">Expiry Date</label>
+                  <label htmlFor="CCexpiry">Expiry Date</label>
                   <input
                     placeholder=" "
-                    name="expiry"
-                    id="expiry"
+                    name="CCexpiry"
+                    id="CCexpiry"
                     type="tel"
                     pattern="[0-9/ ]+"
                     value={handleExpiryDate()}
@@ -169,18 +187,19 @@ export default function CCvalidation({ ...props }) {
                     onInput={(e) => handleExpiryDate(e)}
                     minLength="5"
                     maxLength="5"
-                    autocomplete="cc-exp"
+                    autoComplete="cc-exp"
                     required
                   />
                 </div>
 
                 <div className={billing.inputLabelPair}>
-                  <label htmlFor="cvc">CVC</label>
+                  <label htmlFor="CCcvc">CVC</label>
                   {number.substring(0, 2) == 34 || number.substring(0, 2) == 37 ? (
-                    <input placeholder=" " type="tel" pattern="[0-9 ]+" name="cvc" id="cvc" value={cvc} onChange={(e) => setCvc(e.target.value)} onFocus={(e) => setFocus(e.target.name)} minLength="3" maxLength="4" required />
+                    <input placeholder=" " type="text" inputMode="number" pattern="[0-9 ]+" name="CCcvc" id="CCcvc" value={cvc} onChange={(e) => setCvc(e.target.value)} onFocus={(e) => setFocus(e.target.name)} minLength="3" maxLength="4" autoComplete="cc-csc" required />
                   ) : (
-                    <input placeholder=" " type="tel" name="cvc" id="cvc" value={cvc} onChange={(e) => setCvc(e.target.value)} onFocus={(e) => setFocus(e.target.name)} minLength="3" maxLength="3" autocomplete="cc-csc" required />
+                    <input placeholder=" " type="text" inputMode="number" pattern="[0-9 ]+" name="CCcvc" id="CCcvc" value={cvc} onChange={(e) => setCvc(e.target.value)} onFocus={(e) => setFocus(e.target.name)} minLength="3" maxLength="3" autoComplete="cc-csc" required /> 
                   )}
+                  <span className={billing.requirements}> Must only contain numbers</span>
                 </div>
               </div>
               <div className={generalStyles.buttonWrapper}>
@@ -192,7 +211,7 @@ export default function CCvalidation({ ...props }) {
                 >
                   Back
                 </button>
-                <button className={generalStyles.primaryButton} onClick={(e) => handlePost()} onFocus={(e) => setFocus(e.target.name)}>
+                <button id="complete_purchase_button" className={generalStyles.primaryButton} onClick={(e) => handlePost()} onFocus={(e) => setFocus(e.target.name)}>
                   Complete purchase
                 </button>
               </div>
