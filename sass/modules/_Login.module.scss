@@ -1,0 +1,145 @@
+@use "_General.module" as general;
+
+.login {
+  margin: 0;
+
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2rem;
+
+  padding: 6rem;
+  padding-top: 1rem;
+
+  label {
+    font-size: 1.5rem;
+    line-height: 1;
+    margin-top: 1rem;
+  }
+
+  h2 {
+    text-align: center;
+  }
+
+  .help {
+    color: general.$primary-color-lighter;
+    margin-top: 0;
+  }
+  .users {
+    background-color: general.$grey-100;
+    font-family: general.$body-font;
+    padding: 0.5rem;
+    width: fit-content;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2rem;
+  }
+
+  button {
+    margin-top: 1rem;
+  }
+  a {
+    padding: 0;
+  }
+}
+
+.login__card {
+  background-color: general.$grey-500;
+
+  padding: 6rem;
+  margin-top: 2rem;
+
+  h2 {
+    line-height: 1;
+    margin-bottom: 2rem;
+  }
+}
+
+.inputContainer {
+  display: flex;
+  height: 2rem;
+  position: relative;
+
+  button {
+    padding: 0.2rem;
+    background: none;
+    border: solid 1px white;
+    width: 4rem;
+  }
+  input {
+    width: 100%;
+  }
+
+  svg {
+    fill: general.$primary-color-light;
+    margin-left: 0.5rem;
+    position: absolute;
+    right: 1rem;
+    top: 0.5rem;
+    scale: 1.5;
+    cursor: pointer;
+  }
+}
+
+.sign_button {
+  width: 100%;
+  margin-top: 2rem;
+  font-size: 1.5rem;
+  padding: 0;
+}
+.g_button {
+  background-color: general.$primary-color-light;
+  width: 100%;
+  box-shadow: rgba(150, 145, 145, 0.279) 0px 2px 8px 0px;
+  color: general.$primary-color-dark;
+  font-family: "roboto", sans-serif;
+  font-size: 1rem;
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+
+  img {
+    margin: 0;
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+}
+
+.forgot {
+  color: general.$primary-color-light;
+  text-decoration: underline;
+  font-family: general.$body-font;
+  font-weight: 600;
+  font-size: 0.8rem;
+  display: block;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+
+  &:hover {
+    color: general.$accent-color-100;
+  }
+}
+@media only screen and (max-width: general.$mobile-query) {
+  .login__card {
+    width: 90%;
+  }
+  .login {
+    margin: 1rem;
+    padding: 1rem;
+    form {
+      padding: 1rem;
+    }
+    input {
+      width: 70vw;
+    }
+
+    .inputContainer {
+      svg {
+        right: 6rem;
+      }
+    }
+  }
+}

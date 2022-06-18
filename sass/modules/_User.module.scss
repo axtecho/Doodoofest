@@ -1,0 +1,32 @@
+@use "_General.module" as general;
+
+.UserPage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+  flex-direction: column;
+  div:first-child {
+    width: 50vw;
+    p {
+      font-size: 1rem;
+    }
+  }
+
+  h3 {
+    font-size: 3rem;
+  }
+  p {
+    font-size: 2rem;
+  }
+
+  a {
+    margin-top: 3rem;
+  }
+}
+
+@media only screen and (max-width: general.$mobile-query) {
+  .login__card {
+    width: 90%;
+  }
+}
