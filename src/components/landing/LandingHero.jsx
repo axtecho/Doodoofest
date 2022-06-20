@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 export default function LandingHero() {
   return (
     <div className={landingStyles.hero}>
-      <img className={landingStyles.hero__logo} src="./img/final_logo.svg" alt="FooFest logo" />
+     <Link to="/"> <img className={landingStyles.hero__logo} src="./img/final_logo.svg" alt="FooFest logo" /></Link>
       <h1 className={generalStyles.d_none}>FooFest</h1>
       <div className={landingStyles.hero__box}>
         <h3 className={landingStyles.genres}>Rock <span>||</span> Metal</h3>

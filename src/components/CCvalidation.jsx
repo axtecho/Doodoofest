@@ -195,9 +195,9 @@ console.log(ExpMaxLength)
                 <div className={billing.inputLabelPair}>
                   <label htmlFor="CCcvc">CVC</label>
                   {number.substring(0, 2) == 34 || number.substring(0, 2) == 37 ? (
-                    <input placeholder=" " type="text" inputMode="number" pattern="[0-9 ]+" name="CCcvc" id="CCcvc" value={cvc} onChange={(e) => setCvc(e.target.value)} onFocus={(e) => setFocus(e.target.name)} minLength="3" maxLength="4" autoComplete="cc-csc" required />
+                    <input placeholder=" " type="text" inputMode="number" pattern="[0-9 ]+" name="cvc" id="CCcvc" value={cvc} onChange={(e) => setCvc(e.target.value)} onFocus={(e) => setFocus(e.target.name)} minLength="3" maxLength="4" autoComplete="cc-csc" required />
                   ) : (
-                    <input placeholder=" " type="text" inputMode="number" pattern="[0-9 ]+" name="CCcvc" id="CCcvc" value={cvc} onChange={(e) => setCvc(e.target.value)} onFocus={(e) => setFocus(e.target.name)} minLength="3" maxLength="3" autoComplete="cc-csc" required /> 
+                    <input placeholder=" " type="text" inputMode="number" pattern="[0-9 ]+" name="cvc" id="CCcvc" value={cvc} onChange={(e) => setCvc(e.target.value)} onFocus={(e) => setFocus(e.target.name)} minLength="3" maxLength="3" autoComplete="cc-csc" required /> 
                   )}
                   <span className={billing.requirements}> Must only contain numbers</span>
                 </div>

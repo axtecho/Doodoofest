@@ -21,9 +21,7 @@ export default function TicketHolderForm(props) {
   }
   const holderForm = [...Array(props.amount)].map((e, i) => {
     if (i < props.amount) {
-      const ticketHolder = 'ticketholder'+(i+1);
-      console.log(ticketHolder)
-      const [info, setInfo] = useState('') 
+ 
       return (
         <fieldset className={billing.ticketholderCard} >
           <legend>Ticketholder {i + 1}</legend>
