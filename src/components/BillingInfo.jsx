@@ -84,7 +84,7 @@ export default function CheckOutForm(props) {
                 <div className={billing.labelInputPair}>
                   <label htmlFor="postalcode">Postal Code</label>
                   {<span className={billing.example}>6100</span>}
-                  <input placeholder=" " type="text" inputMode="number" pattern="[0-9 ]+" id="postalcode" autoComplete="postal-code" required />
+                  <input placeholder=" " type="text" inputMode="number" pattern="[0-9 ]+" minLength="4" maxLength="5" id="postalcode" autoComplete="postal-code" required />
                   <span className={billing.requirements}> Must only contain numbers</span>
                 </div>
               </div>
