@@ -25,9 +25,11 @@ export default function TicketHolderForm(props) {
       return (
         <fieldset className={billing.ticketholderCard} >
           <legend>Ticketholder {i + 1}</legend>
+          <div>
           <label htmlFor="name">Name</label>
           <input type="text" id={"name"+i} name={"name"+i} placeholder=" " pattern="^[-a-zA-ZÆØÅæøå' ]*$" autoComplete="name" required onChange={isChecked ? console.log(fieldSet) : console.log("I'm not checked")}/>
           <span className={billing.requirements}>Must only contain letters</span>
+          </div>
 <>
           <label htmlFor="email">Email</label>
           <input type="email" name="email" id="email" placeholder=" " autoComplete="email" required />
