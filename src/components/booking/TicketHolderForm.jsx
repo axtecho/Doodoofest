@@ -35,21 +35,7 @@ export default function TicketHolderForm(props) {
           <input type="email" name="email" id="email" placeholder=" " autoComplete="email" required />
           <span className={billing.requirements}>Please use valid email address</span>
           </>
-          <div>
-              <label htmlFor="creditcard_info">
-                Use this for the credit card info
-              </label>
-              <input
-                type="checkbox"
-                name="creditcard_info"
-                id="creditcard_info"
-                checked={isChecked}
-                className={billing.ticketCheck}
-                onChange={(e) => {
-                  setIsChecked(e.target.checked)
-                }}
-              />
-            </div>
+       
         </fieldset>
       );
     }
