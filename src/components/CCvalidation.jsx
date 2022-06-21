@@ -157,7 +157,8 @@ console.log(ExpMaxLength)
                 <label id="CCnumber">Card Number</label>
                 <input
                   placeholder=" "
-                  type="tel"
+                  type="text"
+                  inputMode="numeric"
                   pattern="[0-9 ]+"
                   id="CCnumber"
                   name="CCnumber"
@@ -179,7 +180,8 @@ console.log(ExpMaxLength)
                     placeholder=" "
                     name="CCexpiry"
                     id="CCexpiry"
-                    type="tel"
+                    type="text"
+                    inputMode="numeric"
                     pattern="[0-9/ ]+"
                     value={handleExpiryDate()}
                     onChange={(e) => setExpiry(e.target.value)}
@@ -195,9 +197,9 @@ console.log(ExpMaxLength)
                 <div className={billing.inputLabelPair}>
                   <label htmlFor="CCcvc">CVC</label>
                   {number.substring(0, 2) == 34 || number.substring(0, 2) == 37 ? (
-                    <input placeholder=" " type="text" inputMode="number" pattern="[0-9 ]+" name="cvc" id="CCcvc" value={cvc} onChange={(e) => setCvc(e.target.value)} onFocus={(e) => setFocus(e.target.name)} minLength="3" maxLength="4" autoComplete="cc-csc" required />
+                    <input placeholder=" " type="text" inputMode="numeric" pattern="[0-9 ]+" name="cvc" id="CCcvc" value={cvc} onChange={(e) => setCvc(e.target.value)} onFocus={(e) => setFocus(e.target.name)} minLength="3" maxLength="4" autoComplete="cc-csc" required />
                   ) : (
-                    <input placeholder=" " type="text" inputMode="number" pattern="[0-9 ]+" name="cvc" id="CCcvc" value={cvc} onChange={(e) => setCvc(e.target.value)} onFocus={(e) => setFocus(e.target.name)} minLength="3" maxLength="3" autoComplete="cc-csc" required /> 
+                    <input placeholder=" " type="text" inputMode="numeric" pattern="[0-9 ]+" name="cvc" id="CCcvc" value={cvc} onChange={(e) => setCvc(e.target.value)} onFocus={(e) => setFocus(e.target.name)} minLength="3" maxLength="3" autoComplete="cc-csc" required /> 
                   )}
                   <span className={billing.requirements}> Must only contain numbers</span>
                 </div>
