@@ -81,8 +81,8 @@ export default function Booking(props) {
         {step === 5 && <CCvalidation {...values} />}
         {step === 6 && <Thankyou {...values} />}
 
-        {/* {timer === 1 && <Timer setStep={setStep} setTimer={setTimer} />}
-        {step === -1 && <TimeUp setStep={setStep} />} */}
+         {timer === 1 && <Timer setStep={setStep} setTimer={setTimer} />}
+        {step === -1 && <TimeUp setStep={setStep} />} 
 
         {/* {showcontent === 0 ? (
           <section className={generalStyles.sections_forms}>
